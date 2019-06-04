@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev #开发环境
+server:
+  port: 8201
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/
+---
+spring:
+  profiles: test #测试环境
+server:
+  port: 8202
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/
