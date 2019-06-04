@@ -4,6 +4,8 @@ spring:
 ---
 spring:
   profiles: dev #开发环境
+  application:
+    name: springboot-eureka-config-client
 server:
   port: 8201
 eureka:
@@ -13,6 +15,8 @@ eureka:
 ---
 spring:
   profiles: test #测试环境
+  application:
+    name: springboot-eureka-config-client
 server:
   port: 8202
 eureka:
