@@ -1,0 +1,71 @@
+#C:\Windows\System32\drivers\etc  域名映射
+#这些配置会被保留，如果和下面的重复则会被覆盖
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8001
+spring:
+  profiles: dev #开发环境
+  application:
+    name: springboot-eureka-server
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: eureka8001.com #springboot-eureka-server
+    #  但在生产环境，不会频繁重启，所以，一定要把自我保护机制打开，否则网络一旦终端，就无法恢复。
+    #在开发测试阶段，我们可以把自我保护模式关闭   关闭保护机制，以确保注册中心将不可用的实例正确剔除
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000  #（代表是N秒，单位是毫秒,清理失效服务的间隔 ）
+
+---
+spring:
+  profiles: test  #测试环境
+  application:
+    name: springboot-eureka-server
+server:
+  port: 8002
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: eureka8001.com #springboot-eureka-server
+    #  但在生产环境，不会频繁重启，所以，一定要把自我保护机制打开，否则网络一旦终端，就无法恢复。
+    #在开发测试阶段，我们可以把自我保护模式关闭   关闭保护机制，以确保注册中心将不可用的实例正确剔除
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000  #（代表是N秒，单位是毫秒,清理失效服务的间隔 ）
+---
+spring:
+  profiles: prod  #生成环境
+  application:
+    name: springboot-eureka-server
+server:
+  port: 8003
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka8001.com:8001/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: eureka8001.com #springboot-eureka-server
+    #  但在生产环境，不会频繁重启，所以，一定要把自我保护机制打开，否则网络一旦终端，就无法恢复。
+    #在开发测试阶段，我们可以把自我保护模式关闭   关闭保护机制，以确保注册中心将不可用的实例正确剔除
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000  #（代表是N秒，单位是毫秒,清理失效服务的间隔 ）
