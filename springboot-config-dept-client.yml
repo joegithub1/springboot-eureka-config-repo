@@ -2,8 +2,6 @@ spring:
   profiles:
     active: dev
 ---
-server:
-  port: 8007
 spring:
   profiles: dev  #开发环境
   application:
