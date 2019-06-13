@@ -4,8 +4,6 @@ spring:
 ---
 spring:
   profiles: dev  #开发环境
-  application:
-    name: springboot-eureka-provider
   datasource:
     username: root
     password: root
@@ -33,7 +31,6 @@ eureka:
     service-url:
       #defaultZone: http://localhost:8001/eureka/,http://localhost:8002/eureka/,http://localhost:8003/eureka/
       defaultZone: http://eureka8001.com:8001/eureka/
-
   instance:
     prefer-ip-address: true
 mybatis:
